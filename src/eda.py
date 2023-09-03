@@ -59,3 +59,21 @@ def Generate_heatmap_graph(corr, chart_title, mask_uppertri=False ):
     plt.title(chart_title, fontsize=14)
 
     plt.show()
+
+def create_date_features(df):
+    df['month'] = df.date.dt.month.astype("int8")
+    df['day_of_month'] = df.date.dt.day.astype("int8")
+    df['day_of_year'] = df.date.dt.dayofyear.astype("int16")
+    df['week_of_month'] = (df.date.apply(lambda d: (d.day-1) // 7 + 1)).astype("int8")
+    df['week_of_year'] = (df.date.dt.weekofyear).astype("int8")
+    df['day_of_week'] = (df.date.dt.dayofweek + 1).astype("int8")
+    df['year'] = df.date.dt.year.astype("int32")
+    df["is_wknd"] = (df.date.dt.weekday // 4).astype("int8")
+    df["quarter"] = df.date.dt.quarter.astype("int8")
+    df['is_month_start'] = df.date.dt.is_month_start.astype("int8")
+    df['is_month_end'] = df.date.dt.is_month_end.astype("int8")
+    df['is_quarter_start'] = df.date.dt.is_quarter_start.astype("int8")
+    df['is_quarter_end'] = df.date.dt.is_quarter_end.astype("int8")
+    df['is_year_start'] = df.date.dt.is_year_start.astype("int8")
+    df['is_year_end'] = df.date.dt.is_year_end.astype("int8")
+    return df
