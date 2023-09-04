@@ -54,7 +54,7 @@ def Generate_heatmap_graph(corr, chart_title, mask_uppertri=False ):
                 , square = True
                 , annot = True
                 , annot_kws={'size': 10.5, 'weight' : 'bold'}
-                , cmap=plt.get_cmap("YlOrBr")
+                , cmap='Blues'
                 , linewidths=.1)
     plt.title(chart_title, fontsize=14)
 
